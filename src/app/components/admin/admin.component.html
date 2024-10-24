@@ -1,10 +1,20 @@
 <div class="admin-container">
     <nav class="admin-nav">
-      <button class="nav-btn">Datos de Administrador</button>
-      <button class="nav-btn">Administración de Cupones</button>
-      <button class="nav-btn active">Administración de Eventos</button>
-      <button class="nav-btn">Administración de Artistas</button>
+      <button class="nav-btn" [routerLink]="['/admin/datos']" routerLinkActive="active">
+        Datos de Administrador
+      </button>
+      <button class="nav-btn" [routerLink]="['/admin/cupones']" routerLinkActive="active">
+        Administración de Cupones
+      </button>
+      <button class="nav-btn" [routerLink]="['/admin/eventos']" routerLinkActive="active">
+        Administración de Eventos
+      </button>
+      <button class="nav-btn" [routerLink]="['/admin/artistas']" routerLinkActive="active">
+        Administración de Artistas
+      </button>
     </nav>
+
+    <router-outlet></router-outlet>
   
     <div class="content-section">
       <h2>Gestiona los eventos de UNIEVENTOS</h2>

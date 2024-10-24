@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
+  activeTab: string = 'datos';
   eventos = [
     {
       nombre: 'Concierto de Rock',
@@ -22,4 +24,18 @@ export class AdminComponent {
     },
     // ... más eventos
   ];
+
+  adminData = {
+    cedula: '12345874',
+    nombreCompleto: 'Admin 1',
+    direccion: 'Essos',
+    telefono: '12345852',
+    correo: 'admin@email.com',
+    nuevaContrasena: '',
+    confirmarContrasena: ''
+  };
+
+  setActiveTab(tab: string) {
+    this.activeTab = tab;
+  }
 }
