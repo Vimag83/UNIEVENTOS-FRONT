@@ -1,0 +1,97 @@
+<div class="registro-container">
+  <div class="sidebar">
+    <nav>
+      <ul>
+        <li><a href="/eventos">Eventos</a></li>
+        <li><a href="/quienes-somos">Quienes Somos</a></li>
+        <li><a href="/contactanos">Contáctanos</a></li>
+        <li><a href="/donde-estamos">Donde Estamos</a></li>
+        <li class="siguenos">
+          <span>Síguenos</span>
+          <div class="social-icons">
+            <a href="#" class="facebook-icon"><img src="assets/icons/facebook.png" alt="Facebook"></a>
+            <a href="#" class="twitter-icon"><img src="assets/icons/twitter.png" alt="Twitter"></a>
+            <a href="#" class="instagram-icon"><img src="assets/icons/instagram.png" alt="Instagram"></a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="registro-form">
+    <h2>Registrarme con</h2>
+    <form [formGroup]="registroForm" (ngSubmit)="registrar()" novalidate>
+      <div class="form-group">
+        <div class="input-icon">
+          <img src="assets/icons/id-card.png" alt="Cédula icon">
+          <input 
+            type="text" 
+            formControlName="cedula" 
+            placeholder="Cédula">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-icon">
+          <img src="assets/icons/user.png" alt="Usuario icon">
+          <input 
+            type="text" 
+            formControlName="nombre" 
+            placeholder="Nombre Completo">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-icon">
+          <img src="assets/icons/location.png" alt="Dirección icon">
+          <input 
+            type="text" 
+            formControlName="direccion" 
+            placeholder="Dirección">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-icon">
+          <img src="assets/icons/phone.png" alt="Teléfono icon">
+          <input 
+            type="tel" 
+            formControlName="telefono" 
+            placeholder="Teléfono">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-icon">
+          <img src="assets/icons/email.png" alt="Email icon">
+          <input 
+            type="email" 
+            formControlName="email" 
+            placeholder="Correo Electrónico">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-icon">
+          <img src="assets/icons/password.png" alt="Password icon">
+          <input 
+            type="password" 
+            formControlName="password" 
+            placeholder="Contraseña">
+        </div>
+      </div>
+
+      @if (registroForm.hasError('passwordsMismatch')) {
+        <div class="error-message">Las contraseñas no coinciden</div>
+      }
+
+      <button type="submit" class="register-button" [disabled]="registroForm.invalid">
+        Registrar Cuenta
+      </button>
+
+      <div class="login-link">
+        Ya tiene una cuenta? <a href="/login">Iniciar Sesión</a>
+      </div>
+    </form>
+  </div>
+</div>
