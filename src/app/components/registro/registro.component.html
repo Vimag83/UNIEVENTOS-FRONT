@@ -81,6 +81,16 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <div class="input-icon">
+          <img src="assets/icons/password.png" alt="Password icon">
+          <input 
+            type="password" 
+            formControlName="confirmaPassword" 
+            placeholder="Confirmar contraseña">
+        </div>
+      </div>
+
       @if (registroForm.hasError('passwordsMismatch')) {
         <div class="error-message">Las contraseñas no coinciden</div>
       }
