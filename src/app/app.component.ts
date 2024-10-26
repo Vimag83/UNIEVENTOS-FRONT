@@ -11,5 +11,10 @@ import { RouterModule } from '@angular/router';
 })
 export class AppComponent {
   title = 'UNIEVENTOS';
-  footer = 'Pie de pagina Somos una empresa dedicada a la organizacion de Eventos';
+  isMenuOpen = false; 
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+  footer = '© 2024 UNIEVENTOS - Todos los derechos reservados';
 }
