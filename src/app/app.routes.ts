@@ -11,7 +11,8 @@ import { CuponAdminComponent } from './components/admin/cupon-admin/cupon-admin.
 import { ArtistaAdminComponent } from './components/admin/artista-admin/artista-admin.component';
 import { CrearCuponComponent } from './components/admin/crear-cupon/crear-cupon.component';
 import { CrearArtistaComponent } from './components/admin/crear-artista/crear-artista.component';
-
+import { UserComponent } from './components/user/user.component';
+import { PerfilUsuarioComponent } from './components/user/perfil-usuario/perfil-usuario.component';
 
 
 export const routes: Routes = [
@@ -28,6 +29,13 @@ export const routes: Routes = [
          { path: 'cupon-admin', component: CuponAdminComponent },
          { path: 'artistas', component: ArtistaAdminComponent },
          { path: 'crear-artista', component: CrearArtistaComponent }
+         // Aquí irán las demás rutas para las otras pestañas
+       ]
+   },
+   { path: 'user', component: UserComponent,
+      children: [
+         { path: '', redirectTo: 'perfil', pathMatch: 'full' },
+         { path: 'perfil', component: PerfilUsuarioComponent },
          // Aquí irán las demás rutas para las otras pestañas
        ]
    },

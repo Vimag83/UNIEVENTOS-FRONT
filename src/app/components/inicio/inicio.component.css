@@ -1,7 +1,7 @@
 .hero-section {
     text-align: center;
     padding: 4rem 1rem;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+    background: linear-gradient(rgba(112, 100, 100, 0.7), rgba(36, 35, 35, 0.7)), 
                 url('/assets/images/hero-bg.jpg') center/cover;
     color: white;
   }
@@ -13,7 +13,7 @@
   
   .hero-section p {
     font-size: 1.2rem;
-    margin-bottom: 2rem;
+    margin-bottom: rem;
   }
   
   .hero-buttons {
@@ -54,3 +54,37 @@
     text-align: center;
     margin-bottom: 2rem;
   }
+  .social-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 60px;
+    padding-right: 60px; /* agrega un margen derecho para evitar que toque el borde */
+    margin-bottom: 10px; /* espacio opcional en la parte inferior */
+  }
+
+.social-text {
+    margin-right: 30px; /* espacio entre el texto y los iconos */
+    font-size: 2rem;
+  }
+
+.social-icons img {
+  margin-left: 20px; /* Espacio entre los iconos */
+  transition: transform 0.3s ease; /* Transición suave para el efecto hover */
+  display: inline-block; /* Necesario para la transformación */
+  width: 50px; /* o el tamaño que prefieras */
+  height: auto;
+  max-width: 100%;
+  margin-top: 0.5rem;
+  transform: translateY(-5px);
+}
+
+.social-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 30px;
+  padding-right: 1%; /* agrega un margen derecho para evitar que toque el borde */
+  margin-bottom: 1%; /* espacio opcional en la parte inferior */
+}
+  

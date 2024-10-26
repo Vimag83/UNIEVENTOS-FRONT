@@ -10,7 +10,9 @@
 
 /* Header Styles */
 .main-header {
+  background: linear-gradient(rgba(239, 227, 196, 0.7), rgba(250, 162, 54, 0.7));
   background-color: #faebd7;
+  
   
   background-size: cover;
   background-position: center;
