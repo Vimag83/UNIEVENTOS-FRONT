@@ -19,4 +19,24 @@ export class DatoAdminComponent {
     nuevaContrasena: '',
     confirmarContrasena: ''
   };
+
+
+  isEditing = false;
+
+  toggleEditing() {
+    this.isEditing = !this.isEditing;
+  }
+
+  eliminarAdmin() {
+    if (confirm('¿Está seguro que desea eliminar este administrador? Esta acción no se puede deshacer.')) {
+      // Aquí iría la lógica para eliminar el administrador
+      alert('Administrador eliminado con éxito');
+    }
+  }
+
+  guardarCambios() {
+    // Aquí iría la lógica para guardar los cambios
+    alert('Cambios guardados exitosamente');
+    this.isEditing = false;
+  }
 }

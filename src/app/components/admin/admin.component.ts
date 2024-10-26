@@ -35,7 +35,8 @@ export class AdminComponent {
     confirmarContrasena: ''
   };
 
-  setActiveTab(tab: string) {
-    this.activeTab = tab;
+   // Método para gestionar la navegación activa
+   isActive(route: string): boolean {
+    return window.location.pathname.includes(route);
   }
 }
