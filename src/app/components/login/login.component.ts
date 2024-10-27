@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -13,15 +15,24 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  errorMessage: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+     private authService: AuthService) {}
 
   onSubmit() {
     // Aquí irá la lógica de autenticación
-    console.log('Email:', this.email);
-    console.log('Password:', this.password);
-    // Por ahora solo navegamos a inicio
-    this.router.navigate(['/admin']);
+    if (this.authService.login(this.email, this.password)) {
+      const user = this.authService.getCurrentUser();
+      if (user?.role === 'admin') {
+        this.router.navigate(['/admin']);
+      } else {
+        this.router.navigate(['/user/perfil']);
+      }
+    } else {
+      this.errorMessage = 'Credenciales inválidas';
+    }
   }
+  
 
 }
