@@ -13,7 +13,8 @@ import { CrearCuponComponent } from './components/admin/crear-cupon/crear-cupon.
 import { CrearArtistaComponent } from './components/admin/crear-artista/crear-artista.component';
 import { UserComponent } from './components/user/user.component';
 import { PerfilUsuarioComponent } from './components/user/perfil-usuario/perfil-usuario.component';
-
+import { ListaDeseosComponent } from './components/user/lista-deseos/lista-deseos.component';
+import { HistorialComprasComponent } from './components/user/historial-compras/historial-compras.component';
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
@@ -36,6 +37,8 @@ export const routes: Routes = [
       children: [
          { path: '', redirectTo: 'perfil', pathMatch: 'full' },
          { path: 'perfil', component: PerfilUsuarioComponent },
+         { path: 'lista-deseos', component: ListaDeseosComponent},
+         { path: 'historial', component: HistorialComprasComponent},
          // Aquí irán las demás rutas para las otras pestañas
        ]
    },

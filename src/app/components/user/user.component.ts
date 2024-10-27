@@ -25,15 +25,7 @@ export class UserComponent {
     // ... más eventos
   ];
 
-  adminData = {
-    cedula: '12345874',
-    nombreCompleto: 'Admin 1',
-    direccion: 'Essos',
-    telefono: '12345852',
-    correo: 'admin@email.com',
-    nuevaContrasena: '',
-    confirmarContrasena: ''
-  };
+
 
    // Método para gestionar la navegación activa
    isActive(route: string): boolean {
