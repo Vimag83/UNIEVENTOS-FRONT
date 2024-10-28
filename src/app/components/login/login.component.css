@@ -8,7 +8,7 @@
     width: 250px;
     background: rgba(255, 255, 255, 0.9);
     padding: 2rem;
-    border-radius: 20px;
+    border-radius: 10px;
     margin: 1rem;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
   }
@@ -26,7 +26,7 @@
   .sidebar a {
     text-decoration: none;
     color: #333;
-    font-weight: 500;
+    font-weight: 400;
     transition: color 0.3s;
   }
   
@@ -41,8 +41,8 @@
   }
   
   .social-icons img {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
   }
   
   .login-form {
@@ -83,7 +83,7 @@
     width: 100%;
     padding: 12px 12px 12px 40px;
     border: 1px solid #ddd;
-    border-radius: 25px;
+    border-radius: 10px;
     font-size: 1rem;
   }
   
@@ -107,20 +107,27 @@
   .form-links {
     text-align: center;
     margin-top: 1.5rem;
+    
+  }
+  .cancel-link {
+    color: #191414;
+    font-weight: bold;
+    text-decoration: none;
   }
   
   .form-links a {
-    color: #333;
+    color: #1a237e;
     text-decoration: none;
     margin: 0.5rem 0;
     display: block;
+    
   }
   
   .register-link {
     margin: 1rem 0;
+    
+    
   }
   
-  .cancel-link {
-    color: #666;
-    font-weight: bold;
-  }
+ 
+

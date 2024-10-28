@@ -15,11 +15,14 @@ import { UserComponent } from './components/user/user.component';
 import { PerfilUsuarioComponent } from './components/user/perfil-usuario/perfil-usuario.component';
 import { ListaDeseosComponent } from './components/user/lista-deseos/lista-deseos.component';
 import { HistorialComprasComponent } from './components/user/historial-compras/historial-compras.component';
+import { EventosComponent } from './components/eventos/eventos.component';
+
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
    { path: 'login', component: LoginComponent },
    { path: 'registro', component: RegistroComponent },
+   { path: 'eventos', component: EventosComponent},
    { path: 'admin', component: AdminComponent,
       children: [
          { path: '', redirectTo: 'datos', pathMatch: 'full' },
