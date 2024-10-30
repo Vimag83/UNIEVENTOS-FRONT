@@ -47,7 +47,7 @@ export class ComprasComponent {
     description: 'La Mejor Banda de Rock de la Región',
     location: 'Salón de Eventos Norte',
     date: '15 de Septiembre de 2024',
-    image: '/img/event-image.jpg'
+    image: 'cura.png'
   };
 
   locations: LocationPrices = {

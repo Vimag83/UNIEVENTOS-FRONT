@@ -1,10 +1,12 @@
 .container {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    
     grid-template-columns: 35% 35% 30%;
     gap: 20px;
-    padding: 20px;
-    max-width: 100%;
-    margin: 0;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   /* Sección 1: Detalles del evento */
@@ -93,6 +95,7 @@
   
   /* Sección 2: Distribución de localidades */
   .seating-section {
+    flex: 1;
     padding: 20px;
     background: white;
     border-radius: 12px;

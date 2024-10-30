@@ -14,7 +14,7 @@
               <p><strong>Lugar:</strong> {{ selectedEvent.location }}</p>
               <p><strong>Fecha:</strong> {{ selectedEvent.date }}</p>
             </div>
-            <div class="booking-section">
+            <div class="booking-section" [formGroup]="bookingForm">
               <div class="mb-3">
                 <label for="locationSelect" class="form-label">Elegir Localidad</label>
                 <select id="locationSelect" formControlName="location" class="form-select">
@@ -40,7 +40,7 @@
             <div class="seating-section">
               <h3 class="mb-3">Distribución de localidades</h3>
               <div class="seating-chart mb-4">
-                <img src="distribucion-localidades.png" alt="Distribución de localidades" class="img-fluid rounded shadow">
+                <img src="distribucion-localidades.jpg" alt="Distribución de localidades" class="img-fluid rounded shadow">
               </div>
               <div class="availability-table mb-4">
                 <table class="table table-bordered">
@@ -174,11 +174,13 @@
   <div *ngIf="showVerificationModal" class="modal fade show" tabindex="-1" style="display: block; background: rgba(0, 0, 0, 0.5);">
     <div class="modal-dialog">
       <div class="modal-content">
+        <form [formGroup]="verificationForm">
         <div class="modal-header">
           <h5 class="modal-title">Orden de Compra</h5>
           <button type="button" class="btn-close" (click)="closeVerificationModal()"></button>
         </div>
         <div class="modal-body">
+          
           <p><strong>Información detallada de tu compra</strong></p>
           <p>{{ selectedEvent.name }} - Fecha del evento: {{ selectedEvent.date }}</p>
           
@@ -195,7 +197,9 @@
             <input type="text" formControlName="verificationCode" class="form-control" placeholder="Ingresar código">
             <button class="btn btn-primary" (click)="confirmVerification()">Confirmar</button>
           </div>
+          
         </div>
+      </form>
       </div>
     </div>
   </div>
@@ -204,6 +208,7 @@
   <div *ngIf="showSuccessModal" class="modal fade show" tabindex="-1" style="display: block; background: rgba(0, 0, 0, 0.5);">
     <div class="modal-dialog">
       <div class="modal-content success-modal-content">
+
         <div class="modal-header">
           <h5 class="modal-title">Su Pago ha sido Exitoso!!!</h5>
           <button type="button" class="btn-close" (click)="closeSuccessModal()"></button>
