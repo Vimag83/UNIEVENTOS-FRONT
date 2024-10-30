@@ -16,6 +16,7 @@ import { PerfilUsuarioComponent } from './components/user/perfil-usuario/perfil-
 import { ListaDeseosComponent } from './components/user/lista-deseos/lista-deseos.component';
 import { HistorialComprasComponent } from './components/user/historial-compras/historial-compras.component';
 import { EventosComponent } from './components/eventos/eventos.component';
+import { ComprasComponent } from './components/compras/compras.component';
 
 
 export const routes: Routes = [
@@ -23,6 +24,7 @@ export const routes: Routes = [
    { path: 'login', component: LoginComponent },
    { path: 'registro', component: RegistroComponent },
    { path: 'eventos', component: EventosComponent},
+   { path: 'compras', component: ComprasComponent},
    { path: 'admin', component: AdminComponent,
       children: [
          { path: '', redirectTo: 'datos', pathMatch: 'full' },

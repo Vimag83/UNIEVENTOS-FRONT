@@ -65,7 +65,7 @@ export class EventosComponent {
       type: 'Otro'
     },
     {
-      title: 'Ellas quieren ver estrellas',
+      title: 'Superacion personal',
       subtitle: 'Invitados Sorpresa',
       date: '20 octubre',
       location: 'Armenia',

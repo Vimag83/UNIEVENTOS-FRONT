@@ -35,7 +35,7 @@
             <p class="subtitle">{{event.subtitle}}</p>
             <p class="date-location">{{event.date}} -{{event.location}}</p>
             <span class="badge" *ngIf="event.available">DISPONIBLE</span>
-            <button class="buy-button">Comprar Entradas</button>
+            <button class="buy-button" [routerLink]="['/compras']" routerLinkActive="active">Comprar Entradas</button>
           </div>
         </div>
       </div>
