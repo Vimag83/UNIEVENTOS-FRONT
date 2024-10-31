@@ -14,10 +14,10 @@
         <tr>
           <th>Nombre</th>
           <th>Fecha</th>
-          <th>Ubicación</th>
-          <th>Precio</th>
-          <th>Capacidad</th>
-          <th>Tipo</th>
+          <th>Direccion</th>
+          <th>Ciudad</th>
+          <th>Localidades</th>
+          <th>TipoEvento</th>
           <th>Estado</th>
           <th>Acciones</th>
         </tr>
@@ -27,10 +27,10 @@
           <tr>
             <td>{{evento.nombre}}</td>
             <td>{{evento.fecha}}</td>
-            <td>{{evento.ubicacion}}</td>
-            <td>${{evento.precio}}</td>
-            <td>{{evento.capacidad}}</td>
-            <td>{{evento.tipo}}</td>
+            <td>{{evento.direccion}}</td>
+            <td>${{evento.ciudad}}</td>
+            <td>{{evento.localidades}}</td>
+            <td>{{evento.tipoEvento}}</td>
             <td>
               <span class="status-badge {{evento.estado.toLowerCase()}}">
                 {{evento.estado}}

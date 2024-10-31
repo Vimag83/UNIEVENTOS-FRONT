@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EventoDTO } from '../dto/evento-dto';
+import { EventoDTO } from '../dto/eventoDTO/evento-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class EventosService {
 
  constructor() {
    this.eventos = [];
-   this.crearEventosPrueba();
+   
  }
 
 
