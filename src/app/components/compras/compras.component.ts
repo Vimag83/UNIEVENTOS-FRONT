@@ -1,9 +1,6 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 interface LocationPrices {
   [key: string]: number;
@@ -21,10 +18,10 @@ interface Event {
 
 @Component({
   selector: 'app-compras',
+  imports: [CommonModule, ReactiveFormsModule],
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
   templateUrl: './compras.component.html',
-  styleUrl: './compras.component.css'
+  styleUrls: ['./compras.component.css']
 })
 export class ComprasComponent {
   bookingForm!: FormGroup;
@@ -182,5 +179,4 @@ export class ComprasComponent {
   isDiscountActive(): boolean {
     return this.discountRate > 0;
   }
-
 }
