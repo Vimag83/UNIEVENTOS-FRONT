@@ -1,17 +1,11 @@
-package co.edu.uniquindio.proyecto.dto.artistasDTO;
 
 
-import java.util.List;
+export interface InformacionArtistaDTO{
 
-public record InformacionArtistaDTO(
-
-        String nombre,
-        String genero,
-        String email,
-        String telefono
-
-) {
-
+        nombre: string,
+        genero: string,
+        email: string,
+        telefono: string
 
 
 }

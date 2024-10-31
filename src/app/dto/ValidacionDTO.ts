@@ -1,7 +1,8 @@
-package co.edu.uniquindio.proyecto.dto;
 
-public record ValidacionDTO(
-        String campo,
-        String mensaje
-) {
+
+
+export interface ValidacionDTO{
+        campo: string,
+        mensaje: string
+
 }

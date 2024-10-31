@@ -1,11 +1,9 @@
-package co.edu.uniquindio.proyecto.dto.ordenDTO;
+import { LocalidadEventoDTO } from "../eventoDTO/LocalidadEventoDTO"
 
-import org.bson.types.ObjectId;
+export interface AgregarAlCarritoDTO{
+        idCuenta:object,
+        idEvento: object,
+        localidad: string,
+        cantidad: number
 
-public record AgregarAlCarritoDTO(
-        ObjectId idCuenta,
-        ObjectId idEvento,
-        String localidad,
-        int cantidad
-) {
 }

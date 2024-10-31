@@ -1,13 +1,12 @@
-package co.edu.uniquindio.proyecto.dto.ordenDTO;
+import { ResumenCarritoDTO } from "./ResumenCarritoDTO"
 
-import java.time.LocalDateTime;
-import java.util.List;
+export interface OrdenCompraDTO {
 
-public record OrdenCompraDTO(
-        String id,
-        LocalDateTime fechaCreacion,
-        List<ResumenCarritoDTO> entradas,
-        double subtotal, double descuento,
-        double total
-) {
+        id: string,
+        fechaCreacion: Date,
+        entradas: ResumenCarritoDTO[],
+        subtotal: number,
+        descuento: number,
+        total: number
+
 }

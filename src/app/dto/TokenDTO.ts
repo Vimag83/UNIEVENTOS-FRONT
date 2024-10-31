@@ -1,6 +1,6 @@
-package co.edu.uniquindio.proyecto.dto;
 
-public record TokenDTO(
-        String token
-) {
+
+export interface TokenDTO{
+        token: string
+
 }

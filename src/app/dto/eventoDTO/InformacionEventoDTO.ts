@@ -1,23 +1,20 @@
-package co.edu.uniquindio.proyecto.dto.eventoDTO;
+import { LocalidadEventoDTO } from "./LocalidadEventoDTO"
 
-import co.edu.uniquindio.proyecto.model.enums.EstadoEvento;
-import co.edu.uniquindio.proyecto.model.enums.TipoEvento;
+export interface InformacionEventoDTO{       
+        
 
-import java.time.LocalDateTime;
-import java.util.List;
+        id: string,
+        nombre: string,        
+        artista: string,       
+        descripcion: string,       
+        fecha: Date,        
+        direccion: string,        
+        ciudad: string,
+        tipoEvento: string,
+        localidades: LocalidadEventoDTO[],
+        imagenPortada:string,
+        imagenLocalidades:string,
+        estado:string
 
-public record InformacionEventoDTO(
-        String id,
-        String nombre,
-        String artista,
-        String descripcion,
-        LocalDateTime fecha,
-        String direccion,
-        String ciudad,
-        TipoEvento tipoEvento,
-        EstadoEvento estado,
-        List<LocalidadEventoDTO> localidades,
-        String imagenes
-){
 
 }

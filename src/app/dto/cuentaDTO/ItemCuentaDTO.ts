@@ -1,11 +1,10 @@
-package co.edu.uniquindio.proyecto.dto.cuentaDTO;
 
-public record ItemCuentaDTO(
 
-        String id,
-        String nombre,
-        String correo,
-        String telefono
+export interface ItemCuentaDTO{
 
-) {
+        id: string,
+        nombre: string,
+        correo: string,
+        telefono: string
+
 }

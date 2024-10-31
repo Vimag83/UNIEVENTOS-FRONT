@@ -1,9 +1,10 @@
-package co.edu.uniquindio.proyecto.dto.ordenDTO;
 
-public record PagoDTO(
-        String idOrden,
-        String metodoPago,
-        String detallesPago,
-        String codigoConfirmacion
-) {
+
+export interface PagoDTO{
+        
+        idOrden: string,
+        metodoPago: string,
+        detallesPago: string,
+        codigoConfirmacion: string
+
 }

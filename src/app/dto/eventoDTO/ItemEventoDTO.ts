@@ -1,14 +1,9 @@
-package co.edu.uniquindio.proyecto.dto.eventoDTO;
 
-import co.edu.uniquindio.proyecto.model.enums.EstadoEvento;
-import co.edu.uniquindio.proyecto.model.enums.TipoEvento;
 
-import java.time.LocalDateTime;
+export interface ItemEventoDTO{
+        nombre: string,
+        fecha: Date,
+        tipoEvento: string
 
-public record ItemEventoDTO(
-        String nombre,
-        LocalDateTime fecha,
-        TipoEvento tipoEvento
 
-) {
 }

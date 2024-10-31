@@ -1,15 +1,11 @@
-package co.edu.uniquindio.proyecto.dto.ordenDTO;
+import { LocalidadEventoDTO } from "../eventoDTO/LocalidadEventoDTO"
 
-import org.bson.types.ObjectId;
+export interface ResumenCarritoDTO{
 
-import java.time.LocalDateTime;
+        nombreEvento: string,
+        fechaEvento: Date,
+        localidades: LocalidadEventoDTO[],
+        cantidad: number,
+        precioUnitario: number
 
-public record ResumenCarritoDTO(
-
-        String nombreEvento,
-        LocalDateTime fechaEvento,
-        String localidad,
-        int cantidad,
-        double precioUnitario
-) {
 }

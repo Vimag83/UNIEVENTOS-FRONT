@@ -1,12 +1,12 @@
-package co.edu.uniquindio.proyecto.dto.cuentaDTO;
 
-public record InformacionCuentaDTO(
 
-        String id,
-        String cedula,
-        String nombre,
-        String telefono,
-        String direccion,
-        String email
-) {
+export interface InformacionCuentaDTO{
+
+        id: string,
+        cedula: string,
+        nombre: string,
+        telefono: string,
+        direccion: string,
+        email: string
+
 }
