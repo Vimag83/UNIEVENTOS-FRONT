@@ -16,11 +16,9 @@ export class EventosService {
    
  }
 
-
  public listar(){
    return this.eventos;
  }
-
 
  public crear(crearEventoDTO:EventoDTO){
    this.eventos.push(crearEventoDTO);
