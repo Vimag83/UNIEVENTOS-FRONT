@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CrearArtistaComponent {
   nuevoArtista = {
+    id: '',
     nombre: '',
     genero: '',
     email: '',
