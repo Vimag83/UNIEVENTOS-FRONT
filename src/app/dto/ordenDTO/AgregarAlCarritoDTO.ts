@@ -1,9 +1,10 @@
 import { LocalidadEventoDTO } from "../eventoDTO/LocalidadEventoDTO"
 
 export interface AgregarAlCarritoDTO{
-        idCuenta:object,
-        idEvento: object,
+        idCuenta:string,
+        idEvento: string,
         localidad: string,
-        cantidad: number
+        cantidad: number,
+        idEntrada: string
 
 }

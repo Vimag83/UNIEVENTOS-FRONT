@@ -10,68 +10,50 @@ import { ResumenOrdenDTO } from '../dto/ordenDTO/ResumenOrdenDTO';
 })
 export class OrdenService {
 
-  constructor() { }
+  ordenes:OrdenCompraDTO[]= [];
 
-   /**
-   * Genera una nueva orden de compra
-   * @param idCuenta Identificador de la cuenta
-   * @returns OrdenCompraDTO con la información de la orden generada
-   */
-   public generarOrdenCompra(idCuenta: string): Promise<OrdenCompraDTO> {
-    return new Promise((resolve, reject) => {
-      try {
-        // Aquí iría la lógica para generar la orden de compra
-        resolve({} as OrdenCompraDTO);
-      } catch (error) {
-        reject(error);
-      }
-    });
+  constructor() { 
+    this.ordenes = [];
   }
 
-  /**
-   * Confirma el pago de una orden
-   * @param idOrden Identificador de la orden
-   * @param codigoConfirmacion Código de confirmación del pago
-   */
-  public confirmarPago(idOrden: string, codigoConfirmacion: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-      try {
-        // Aquí iría la lógica para confirmar el pago
-        resolve();
-      } catch (error) {
-        reject(error);
-      }
-    });
+  public realizarPago(idOrden: string): String {
+      return 'Pago realizado exitosamente';
   }
 
-  /**
-   * Busca los cupones utilizados por un usuario
-   * @param idUsuario Identificador del usuario
-   * @returns Lista de ResumenCuponDTO con los cupones utilizados
-   */
-  public buscarCuponesUtilizadosPorUsuario(idUsuario: string): Promise<ResumenCuponDTO[]> {
-    return new Promise((resolve, reject) => {
-      try {
-        // Aquí iría la lógica para buscar los cupones
-        resolve([] as ResumenCuponDTO[]);
-      } catch (error) {
-        reject(error);
-      }
-    });
+  public aplicarDescuento(idCuenta: string, codigoDescuento: string): ResumenOrdenDTO {
+    const orden = this.ordenes.find(o => o.id === idCuenta);
+    if (orden) {
+      // Aplicar descuento y devolver la orden actualizada
+      return { ...orden, descuento: 10, total: orden.subtotal - 10 };
+    } else {
+      throw new Error('Orden no encontrada');
+    }
   }
 
-  /**
-   * Recibe y procesa una notificación de MercadoPago
-   * @param request Objeto con la información de la notificación
-   */
-  public recibirNotificacionMercadoPago(request: { [key: string]: any }): Promise<void> {
-    return new Promise((resolve, reject) => {
-      try {
-        // Aquí iría la lógica para procesar la notificación
-        resolve();
-      } catch (error) {
-        reject(error);
-      }
-    });
+  public generarOrdenCompra(idCuenta: string): OrdenCompraDTO {   
+    const nuevaOrden: OrdenCompraDTO = {
+      id: 'nuevoId', // Generar un ID único
+      fechaCreacion: new Date(),
+      entradas: [],
+      subtotal: 100,
+      descuento: 0,
+      total: 100
+    };
+    this.ordenes.push(nuevaOrden);
+    return nuevaOrden;
   }
+
+  confirmarPago(idOrden: string, codigoConfirmacion: string): void {
+    console.log(`Confirmando pago para la orden ${idOrden} con código ${codigoConfirmacion}`);
+}
+
+buscarCuponesUtilizadosPorUsuario(idUsuario: string): ResumenCuponDTO[] {
+    const cupones: ResumenCuponDTO[] = [];
+    return cupones;
+}
+
+recibirNotificacionMercadoPago(request: Map<string, Object>): void {
+    console.log('Recibida notificación de Mercado Pago:', request);
+}
+   
 }
