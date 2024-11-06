@@ -1,5 +1,4 @@
-import { LocalidadEventoDTO } 
-from "./LocalidadEventoDTO"
+import { LocalidadEventoDTO } from "./LocalidadEventoDTO"
 
 export interface EventoDTO {
     id: string,

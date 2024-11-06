@@ -22,7 +22,7 @@ export class AdminComponent {
       tipo: 'Concierto',
       estado: 'Terminado'
     },
-    // ... más eventos
+    
   ];
 
   adminData = {
