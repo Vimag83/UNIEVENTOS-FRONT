@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray } from '@angular/forms';
+import { PublicoService } from '../../../services/publico.service';
+import { AdministradorService } from '../../../administrador.service';
+import Swal from 'sweetalert2';
+import { CrearEventoDTO } from '../../../dto/eventoDTO/CrearEventoDTO';
 
 @Component({
   selector: 'app-crear-evento',
@@ -11,12 +15,28 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray } fr
   styleUrls: ['./crear-evento.component.css']
 })
 export class CrearEventoComponent {
+
+
+  
   crearEventoForm!: FormGroup;
   tiposDeEvento = ['Concierto', 'Teatro', 'Otro'];
   ciudades = ['Bogotá', 'Medellín', 'Cali', 'Barranquilla'];
+  eventos: string[] = [];
+  subir: any;
+  imagenPortada: any;
+  imagenLocalidades: any;
+  adminService: any;
+  tokenService: any;
+  clienteService: any;
+  ordenes: any;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private publicoService: PublicoService, private administradorService: AdministradorService) {
+    this.tiposDeEvento = [];
+    this.ciudades = [];
     this.crearFormulario();
+    this.listarCiudades();
+    this.listarTipos();
+    
   }
 
   private crearFormulario() {
@@ -52,20 +72,36 @@ export class CrearEventoComponent {
     this.localidades.removeAt(index);
   }
 
-  onFileChange(event: any, tipo: string) {
+  public listarTipos(){
+    this.publicoService.listarTipos().subscribe({
+      next: (data) => {
+        this.tiposDeEvento = data.respuesta;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+   }
+   
+
+   public listarCiudades(){
+    this.publicoService.listarCiudades().subscribe({
+      next: (data) => {
+        this.ciudades = data.respuesta;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+   }
+
+   public onFileChange(event: any, tipo: string) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      if(tipo === 'portada') {
-        this.crearEventoForm.patchValue({
-          imagenPortada: file
-        });
-      } else {
-        this.crearEventoForm.patchValue({
-          imagenLocalidades: file
-        });
-      }
+      tipo == 'localidades' ? (this.imagenLocalidades = file) : (this.imagenPortada = file);
     }
-  }
+   }
+   
 
   onSubmit() {
     if (this.crearEventoForm.valid) {
@@ -78,4 +114,70 @@ export class CrearEventoComponent {
       });
     }
   }
+
+  public obtenerEventos(){
+    this.publicoService.listarEventos().subscribe( {
+      next: (data) => {
+        this.eventos = data.respuesta;
+      },
+      error: (error) => {
+        console.error(error);
+   },
+    
+  });
+   }
+
+   public subirImagen(tipo:string){
+    const formData = new FormData();
+    const imagen = tipo == 'portada' ? this.imagenPortada : this.imagenLocalidades;
+    const formControl = tipo == 'portada' ? 'imagenPortada' : 'imagenLocalidades';
+   
+   
+    formData.append('imagen', imagen!);
+   
+   
+    this.adminService.subirImagen(formData).subscribe({
+      next: (data: { respuesta: any; }) => {
+        this.crearEventoForm.get(formControl)?.setValue(data.respuesta);
+        Swal.fire("Exito!", "Se ha subido la imagen.", "success");
+      },
+      error: (error: { error: { respuesta: string | undefined; }; }) => {
+        Swal.fire("Error!", error.error.respuesta, "error");
+      }
+    }); 
+}
+
+public crearEvento(){
+
+
+  const crearEventoDTO = this.crearEventoForm.value as CrearEventoDTO;
+ 
+ 
+  this.adminService.crearEvento(crearEventoDTO).subscribe({
+    next: (data: any) => {
+      Swal.fire("Exito!", "Se ha creado un nuevo evento.", "success");
+    },
+    error: (error: { error: { respuesta: string | undefined; }; }) => {
+      Swal.fire("Error!", error.error.respuesta, "error");
+    }
+  });
+}
+
+public listarHistorialOrdenesCompra(){
+
+
+  const codigoCliente = this.tokenService.getCodigo();
+
+
+  this.clienteService.listarHistorialCompras(codigoCliente).subscribe({
+    next: (data: { respuesta: any; }) => {
+      this.ordenes = data.respuesta;
+    },
+    error: (error: { error: { respuesta: string | undefined; }; }) => {
+      Swal.fire("Error!", error.error.respuesta, "error");
+    }
+  });
+
+
+}
 }
