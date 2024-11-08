@@ -39,9 +39,7 @@ export class EventosService {
   return this.eventos.filter(evento => evento.nombre.includes(nombre));
 }
 
-public buscarPorFecha(fecha: Date): EventoDTO[] {
-  return this.eventos.filter(evento => evento.fecha === fecha);
-}
+
 }
 
 

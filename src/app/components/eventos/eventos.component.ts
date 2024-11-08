@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { PublicoService } from '../../services/publico.service';
+import { AdministradorService } from '../../administrador.service';
 
 @Component({
   selector: 'app-eventos',
@@ -11,12 +13,13 @@ import { RouterModule } from '@angular/router';
   styleUrl: './eventos.component.css'
 })
 export class EventosComponent {
+  [x: string]: any;
   searchTerm: string = '';
   selectedType: string = '';
   selectedCity: string = '';
 
-  eventTypes = ['Concierto', 'Teatro', 'Otro'];
-  cities = ['Armenia', 'Bogotá', 'Cali', 'Medellín'];
+  tiposDeEvento = ['Concierto', 'Teatro', 'Otro'];
+  ciudades = ['Armenia', 'Bogotá', 'Cali', 'Medellín'];
 
   events = [
     {
@@ -75,8 +78,9 @@ export class EventosComponent {
     }
   ];
 
-  currentSlide = 0;
 
+  currentSlide = 0;
+ 
   nextSlide() {
     this.currentSlide = (this.currentSlide + 1) % this.events.length;
   }
@@ -93,5 +97,9 @@ export class EventosComponent {
       return matchesSearch && matchesType && matchesCity;
     });
   }
+
+  
+   
+   
 
 }

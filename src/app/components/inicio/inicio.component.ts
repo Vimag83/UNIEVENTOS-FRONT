@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PublicoService } from '../../services/publico.service';
 
 
 
@@ -13,10 +14,28 @@ import { RouterModule } from '@angular/router';
 })
 export class InicioComponent {
   
-
+  eventos: string[] = [];
   currentSlide = 0;
-
  
+
+  constructor(private publicoService: PublicoService) {
+
+    this.eventos = [];
+    this.obtenerEventos();
   
+
+ }
+ 
+ public obtenerEventos(){
+  this.publicoService.listarEventos().subscribe( {
+    next: (data) => {
+      this.eventos = data.respuesta;
+    },
+    error: (error) => {
+      console.error(error);
+ },
+  
+});
+ }
 }
 
