@@ -13,7 +13,7 @@ export class TokenService {
 
   public setToken(tokesessionStoragen: string) {
     window.sessionStorage.removeItem(TOKEN_KEY);
-    window..setItem(TOKEN_KEY, token);
+    window.sessionStorage.setItem(TOKEN_KEY, tokesessionStoragen);
   }
 
   public getToken(): string | null {
