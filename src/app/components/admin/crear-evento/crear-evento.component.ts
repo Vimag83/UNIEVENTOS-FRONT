@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray } from '@angular/forms';
+import { PublicoService } from '../../../services/publico.service';
 
 @Component({
   selector: 'app-crear-evento',
@@ -15,8 +16,13 @@ export class CrearEventoComponent {
   tiposDeEvento = ['Concierto', 'Teatro', 'Otro'];
   ciudades = ['Bogotá', 'Medellín', 'Cali', 'Barranquilla'];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private publicoService: PublicoService) {
     this.crearFormulario();
+    this.tiposDeEvento = [];
+    this.ciudades = [];
+    this.listarCiudades();
+    this.listarTipos();
+
   }
 
   private crearFormulario() {
@@ -78,4 +84,28 @@ export class CrearEventoComponent {
       });
     }
   }
+
+  public listarTipos(){
+    this.publicoService.listarTipos().subscribe({
+      next: (data) => {
+        this.tiposDeEvento = data.respuesta;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+   }
+
+   public listarCiudades(){
+    this.publicoService.listarCiudades().subscribe({
+      next: (data) => {
+        this.ciudades = data.respuesta;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+   }
+   
+   
 }

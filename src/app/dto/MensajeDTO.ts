@@ -1,6 +1,6 @@
 
 
-export interface MensajeDTO<T>{
+export interface MensajeDTO{
         error: boolean,
         respuesta: any
 

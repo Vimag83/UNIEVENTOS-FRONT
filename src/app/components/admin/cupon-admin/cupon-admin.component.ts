@@ -13,36 +13,24 @@ import { RouterModule } from '@angular/router';
 export class CuponAdminComponent {
   cupones = [
     {
-      codigo: 'NUEVO2024',
-      descuento: '15 %',
-      expiracion: '08/09/2024',
-      tipo: 'Único',
-      uso: '25/100',
-      estado: 'Activo'
-    },
-    {
-      codigo: 'CURA2024',
-      descuento: '20 %',
-      expiracion: '29/08/2024',
-      tipo: 'Individual',
-      uso: '75/100',
-      estado: 'Inactivo'
-    }
+      codigo: '',
+      descuento: '',
+      expiracion: '',
+      tipo: '',
+      uso: '',
+      estado: ''
+    }   
+    
   ];
 
   historialCupones = [
     {
-      codigo: 'NUEVO2024',
-      usuario: 'Armando Casas',
-      fechaUso: '28/08/2024',
-      evento: 'Concierto de Rock al Parque'
+      codigo: '',
+      usuario: '',
+      fechaUso: '',
+      evento: ''
     },
-    {
-      codigo: 'CURA2024',
-      usuario: 'Ananias Lucumi',
-      fechaUso: '19/08/2024',
-      evento: 'Concierto Banda Cura Metal'
-    }
+    
   ];
 
   crearCupon() {

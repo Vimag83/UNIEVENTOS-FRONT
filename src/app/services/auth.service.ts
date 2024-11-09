@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { CrearCuentaDTO } from '../dto/cuentaDTO/CrearCuentaDTO';
+import { MensajeDTO } from '../dto/MensajeDTO';
+import { Observable } from 'rxjs';
+import { LoginDTO } from '../dto/LoginDTO';
+
 
 
 interface User {
@@ -15,12 +20,27 @@ interface User {
 export class AuthService {
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
+  private authURL = "http://localhost:8080/api/auth";
+
+
+ constructor(private http: HttpClient) { }
+
+ public crearCuenta(cuentaDTO: CrearCuentaDTO): Observable<MensajeDTO> {
+  return this.http.post<MensajeDTO>(`${this.authURL}/crear-cuenta`, cuentaDTO);
+ }
+ 
+ 
+ public iniciarSesion(loginDTO: LoginDTO): Observable<MensajeDTO> {
+  return this.http.post<MensajeDTO>(`${this.authURL}/iniciar-sesion`, loginDTO);
+ }
+ 
 
   // Datos de ejemplo
   private users = [
     { email: 'user@email.com', password: 'useruser', name: 'Usuario Normal', role: 'user' as const },
     { email: 'admin@email.com', password: 'adminadmin', name: 'Administrador', role: 'admin' as const }
   ];
+
 
   login(email: string, password: string): boolean {
     const user = this.users.find(u => u.email === email && u.password === password);

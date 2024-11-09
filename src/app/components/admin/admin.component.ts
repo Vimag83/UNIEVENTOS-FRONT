@@ -26,11 +26,11 @@ export class AdminComponent {
   ];
 
   adminData = {
-    cedula: '12345874',
-    nombreCompleto: 'Admin 1',
-    direccion: 'Essos',
-    telefono: '12345852',
-    correo: 'admin@email.com',
+    cedula: '',
+    nombreCompleto: '',
+    direccion: '',
+    telefono: '',
+    correo: '',
     nuevaContrasena: '',
     confirmarContrasena: ''
   };

@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { LoginDTO } from '../../dto/LoginDTO';
+import { TokenService } from '../../services/token.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -10,29 +13,39 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
+  loginData: LoginDTO = { email: '', password: '' };
   errorMessage: string = '';
 
-  constructor(private router: Router,
-     private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private tokenService: TokenService
+  ) {}
 
   onSubmit() {
-    // Aquí irá la lógica de autenticación
-    if (this.authService.login(this.email, this.password)) {
-      const user = this.authService.getCurrentUser();
-      if (user?.role === 'admin') {
-        this.router.navigate(['/admin']);
-      } else {
-        this.router.navigate(['/user/perfil']);
+    this.authService.iniciarSesion(this.loginData).subscribe({
+      next: (data) => {
+        // Guarda el token en TokenService
+        this.tokenService.setToken(data.respuesta.token);
+        
+        // Redirige al usuario según su rol (esto puede depender de tu lógica de roles)
+        const user = this.authService.getCurrentUser();
+        if (user?.role === 'admin') {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/user/perfil']);
+        }
+      },
+      error: (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.error.respuesta || 'Credenciales inválidas'
+        });
       }
-    } else {
-      this.errorMessage = 'Credenciales inválidas';
-    }
+    });
   }
-  
-
 }
