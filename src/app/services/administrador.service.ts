@@ -22,7 +22,7 @@ import { InformacionCuponDTO } from '../dto/cuponDTO/InformacionCuponDTO';
 })
 export class AdministradorService {
 
-  private adminURL = "http://localhost:8080/api/admin";
+  private adminURL = "http://localhost:8081/api/administrador";
 
 
   constructor(private http: HttpClient) { }
@@ -54,7 +54,7 @@ export class AdministradorService {
     return this.http.post<MensajeDTO>(`${this.adminURL}/filtrar`, filtroDTO);
   }
 
-  public cambiarEstadoEvento(id: string, nuevoEstado: EstadoEvento): Observable<MensajeDTO> {
+  public cambiarEstadoEvento(id: string, nuevoEstado: string): Observable<MensajeDTO> {
     return this.http.put<MensajeDTO>(`${this.adminURL}/cambiar-estado/${id}`, null, {
       params: { nuevoEstado: nuevoEstado }
     });

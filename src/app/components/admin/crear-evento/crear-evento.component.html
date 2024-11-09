@@ -58,10 +58,8 @@
             <h3>Imagen Portada</h3>
             <div class="upload-area">
               <input type="file" (change)="onFileChange($event, 'portada')" accept="image/*">
-              <div class="upload-placeholder">
-                <img src="subir.png" alt="Upload">
-                <span>Subir Imagen</span>
-              </div>
+              <button (click)="subirImagen('portada')" >Subir imagen</button>
+              <img src="{{crearEventoForm.get('imagenPortada')?.value}}" style="width: 200px;"/>
             </div>
           </div>
   
@@ -69,10 +67,8 @@
             <h3>Imagen Localidades</h3>
             <div class="upload-area">
               <input type="file" (change)="onFileChange($event, 'localidades')" accept="image/*">
-              <div class="upload-placeholder">
-                <img src="subir.png" alt="Upload">
-                <span>Subir Imagen</span>
-              </div>
+              <button (click)="subirImagen('localidades')" >Subir imagen</button>
+              <img src="{{crearEventoForm.get('imagenLocalidades')?.value}}" style="width: 200px;"/>
             </div>
           </div>
         </div>

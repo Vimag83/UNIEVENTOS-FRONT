@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray } from '@angular/forms';
 import { PublicoService } from '../../../services/publico.service';
+import { AdministradorService } from '../../../services/administrador.service';
 
 @Component({
   selector: 'app-crear-evento',
@@ -13,14 +14,15 @@ import { PublicoService } from '../../../services/publico.service';
 })
 export class CrearEventoComponent {
   crearEventoForm!: FormGroup;
-  tiposDeEvento = ['Concierto', 'Teatro', 'Otro'];
+  tiposDeEvento = [];
   ciudades = ['Bogotá', 'Medellín', 'Cali', 'Barranquilla'];
+  imagenPortada!: File;
+  imagenLocalidades!: File;
 
-  constructor(private fb: FormBuilder, private publicoService: PublicoService) {
+  constructor(private fb: FormBuilder, private publicoService: PublicoService, private adminService:AdministradorService) {
     this.crearFormulario();
     this.tiposDeEvento = [];
     this.ciudades = [];
-    this.listarCiudades();
     this.listarTipos();
 
   }
@@ -62,13 +64,9 @@ export class CrearEventoComponent {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       if(tipo === 'portada') {
-        this.crearEventoForm.patchValue({
-          imagenPortada: file
-        });
+        this.imagenPortada = file;
       } else {
-        this.crearEventoForm.patchValue({
-          imagenLocalidades: file
-        });
+        this.imagenLocalidades = file;
       }
     }
   }
@@ -96,14 +94,31 @@ export class CrearEventoComponent {
     });
    }
 
-   public listarCiudades(){
-    this.publicoService.listarCiudades().subscribe({
-      next: (data) => {
-        this.ciudades = data.respuesta;
+   public subirImagen(tipoImagen:string){
+
+    const formData = new FormData();
+
+    if(tipoImagen == "portada"){
+      formData.append("imagen", this.imagenPortada );
+    }else{
+      formData.append("imagen", this.imagenLocalidades );
+    }
+
+    this.adminService.subirImagen(formData).subscribe({
+      next: data => {
+        if(tipoImagen == "portada"){
+          this.crearEventoForm.patchValue({
+            imagenPortada: data.respuesta
+          });
+        }else{
+          this.crearEventoForm.patchValue({
+            imagenLocalidades: data.respuesta
+          });
+        }
       },
-      error: (error) => {
-        console.error(error);
-      },
+      error: error => {
+
+      }
     });
    }
    

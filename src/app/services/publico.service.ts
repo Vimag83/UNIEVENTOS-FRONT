@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class PublicoService {
 
-  private publicoURL = "http://localhost:8080/api/publico";
+  private publicoURL = "http://localhost:8081/api/publico";
 
   constructor(private http: HttpClient) { }
 
   public listarTipos(): Observable<MensajeDTO> {
-    return this.http.get<MensajeDTO>(`${this.publicoURL}/evento/obtener-tipos`);
+    return this.http.get<MensajeDTO>(`${this.publicoURL}/evento/listar-tipos`);
   }
  
  
