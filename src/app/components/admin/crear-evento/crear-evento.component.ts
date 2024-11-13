@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray } from '@angular/forms';
 import { PublicoService } from '../../../services/publico.service';
 import { AdministradorService } from '../../../services/administrador.service';
+import { CrearEventoDTO } from '../../../dto/eventoDTO/CrearEventoDTO';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-evento',
@@ -121,6 +123,25 @@ export class CrearEventoComponent {
       }
     });
    }
+
+   public crearEvento(){
+
+
+    const crearEventoDTO = this.crearEventoForm.value as CrearEventoDTO;
+   
+   
+    this.adminService.crearEvento(crearEventoDTO).subscribe({
+      next: data => {
+        Swal.fire("Exito!", "Se ha creado un nuevo evento.", "success");
+      },
+      error: error => {
+        Swal.fire("Error!", error.error.respuesta, "error");
+      }
+    });
+   
+   
+   }
+   
    
    
 }

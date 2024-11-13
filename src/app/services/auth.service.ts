@@ -20,7 +20,7 @@ interface User {
 export class AuthService {
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
-  private authURL = "http://localhost:8080/api/auth";
+  private authURL = "http://localhost:8081/api/auth";
 
 
  constructor(private http: HttpClient) { }

@@ -18,12 +18,23 @@ import Swal from 'sweetalert2';
 export class LoginComponent {
   loginData: LoginDTO = { email: '', password: '' };
   errorMessage: string = '';
+  isLogged = false;
+  email: string = "";
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private tokenService: TokenService
-  ) {}
+  ) {
+    this.isLogged = this.tokenService.isLogged();
+   if (this.isLogged) {
+     this.email = this.tokenService.getEmail();
+  }
+}
+  public logout() {
+    this.tokenService.logout();
+  }
+ 
 
   onSubmit() {
     this.authService.iniciarSesion(this.loginData).subscribe({
