@@ -30,7 +30,7 @@ export class TokenService {
   public login(token: string) {
     this.setToken(token);
     const rol = this.getRol();
-    let destino = rol == "ADMINISTRADOR" ? "/admin" : "/cliente";
+    let destino = rol == "admin" ? "/admin" : "/cliente";
     this.router.navigate([destino]).then(() => {
       window.location.reload();
     });

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-
+import { NgModule } from '@angular/core';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
@@ -23,30 +23,31 @@ import { RolesGuard } from './guards/roles.service';
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
-   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
-   { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
+   { path: 'login', component: LoginComponent, },
+   { path: 'registro', component: RegistroComponent,},
    { path: 'eventos', component: EventosComponent},
    { path: 'compras', component: ComprasComponent},
-   { path: 'admin', component: AdminComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] },
+   { path: 'admin', component: AdminComponent,
       children: [
          { path: '', redirectTo: 'datos', pathMatch: 'full' },
          { path: 'datos', component: DatoAdminComponent },
-         { path: 'crear-evento', component: CrearEventoComponent,canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
-         { path: 'evento-admin', component: EventoAdminComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
-         { path: 'crear-cupon', component: CrearCuponComponent,canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
-         { path: 'cupon-admin', component: CuponAdminComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
-         { path: 'artistas', component: ArtistaAdminComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
-         { path: 'crear-artista', component: CrearArtistaComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } }
+         { path: 'crear-evento', component: CrearEventoComponent },
+         { path: 'evento-admin', component: EventoAdminComponent},
+         { path: 'crear-cupon', component: CrearCuponComponent},
+         { path: 'cupon-admin', component: CuponAdminComponent },
+         { path: 'artistas', component: ArtistaAdminComponent },
+         { path: 'crear-artista', component: CrearArtistaComponent }
          // Aquí irán las demás rutas para las otras pestañas
        ]
    },
-   { path: 'user', component: UserComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] },
+   { path: 'user', component: UserComponent,
       children: [
          { path: '', redirectTo: 'perfil', pathMatch: 'full' },
-         { path: 'perfil', component: PerfilUsuarioComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
-         { path: 'lista-deseos', component: ListaDeseosComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] }},
-         { path: 'historial', component: HistorialComprasComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] }},
+         { path: 'perfil', component: PerfilUsuarioComponent},
+         { path: 'lista-deseos', component: ListaDeseosComponent},
+         { path: 'historial', component: HistorialComprasComponent},
          // Aquí irán las demás rutas para las otras pestañas
+         //, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } sale porque presenta fallos lo mismo que en admin
        ]
    },
    
