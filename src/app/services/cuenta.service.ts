@@ -6,6 +6,9 @@ import { ItemCuentaDTO } from '../dto/cuentaDTO/ItemCuentaDTO';
 import { LoginDTO } from '../dto/LoginDTO';
 import { CambiarPasswordDTO } from '../dto/CambiarPasswordDTO';
 import { TokenDTO } from '../dto/TokenDTO';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { MensajeDTO } from '../dto/MensajeDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +20,7 @@ export class CuentaService {
   private info: InformacionCuentaDTO[];
   private editar: EditarCuentaDTO[];
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.cuentas = [];
     this.info = [];
     this.editar = [];
@@ -53,9 +56,7 @@ export class CuentaService {
     return 'Contraseña cambiada exitosamente';
   }
 
-  public iniciarSesion(loginDTO: LoginDTO, ) {
-   
-  }
+  
 
   listarCuentas(): ItemCuentaDTO[] {
     return this.cuentas;

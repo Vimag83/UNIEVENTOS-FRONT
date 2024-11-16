@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ResumenEventoDTO } from '../../dto/eventoDTO/ResumenEventoDTO';
+import { PublicoService } from '../../services/publico.service';
 
 @Component({
   selector: 'app-eventos',
@@ -18,7 +20,7 @@ export class EventosComponent {
   eventTypes = ['Concierto', 'Teatro', 'Otro'];
   cities = ['Armenia', 'Bogotá', 'Cali', 'Medellín'];
 
-  events = [
+  events:ResumenEventoDTO[] = [/*
     {
       title: 'Concierto de Rock',
       subtitle: 'Banda Cura',
@@ -73,7 +75,7 @@ export class EventosComponent {
       available: true,
       type: 'Otro'
     }
-  ];
+  */];
 
   currentSlide = 0;
 
@@ -85,12 +87,24 @@ export class EventosComponent {
     this.currentSlide = (this.currentSlide - 1 + this.events.length) % this.events.length;
   }
 
+  constructor(private publicoService:PublicoService){
+    this.filteredEvents();
+  }
+
   filteredEvents() {
-    return this.events.filter(event => {
+    /*return this.events.filter(event => {
       const matchesSearch = event.title.toLowerCase().includes(this.searchTerm.toLowerCase());
       const matchesType = !this.selectedType || event.type === this.selectedType;
       const matchesCity = !this.selectedCity || event.location === this.selectedCity;
       return matchesSearch && matchesType && matchesCity;
+    });*/
+    this.publicoService.listarEventos().subscribe({
+      next:data => {
+        this.events= data.respuesta;
+      },
+      error: data => {
+        console.log(data.error);
+      }
     });
   }
 

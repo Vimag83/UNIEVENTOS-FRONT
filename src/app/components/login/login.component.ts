@@ -42,10 +42,10 @@ export class LoginComponent {
         // Guarda el token en TokenService
         this.tokenService.setToken(data.respuesta.token);
         
-        // Redirige al usuario según su rol (esto puede depender de tu lógica de roles)
-        const user = this.authService.getCurrentUser();
-        if (user?.role === 'admin') {
-          this.router.navigate(['/admin']);
+        // Redirige al usuario según su rol 
+        const rol = this.tokenService.getRol();
+        if (rol == 'ADMINISTRADOR') {
+          this.router.navigate(['admin']);
         } else {
           this.router.navigate(['/user/perfil']);
         }
