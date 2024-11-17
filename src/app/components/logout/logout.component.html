@@ -1,2 +1,17 @@
-<p>logout works!</p>
-<button (click)="cerrarSesion()" >Cerrar sesion</button>
+<div class="logout-container">
+    <div class="logout-content">
+      <h2>¡Hasta pronto, {{ username }}!</h2>
+      <p class="user-info">
+        <span class="role-badge">{{ userRole }}</span>
+      </p>
+      <p>¿Estás seguro que deseas cerrar sesión?</p>
+      <div class="button-group">
+        <button class="btn-cancel" (click)="cancelar()">
+          <i class="fas fa-times"></i> Cancelar
+        </button>
+        <button class="btn-logout" (click)="cerrarSesion()">
+          <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+        </button>
+      </div>
+    </div>
+  </div>

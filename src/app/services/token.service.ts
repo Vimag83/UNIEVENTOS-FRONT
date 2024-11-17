@@ -80,6 +80,16 @@ public getIDCuenta(): string {
   return "";
  }
  
- 
+ public getUsername(): string {
+  const token = this.getToken();
+  if (token) {
+    const values = this.decodePayload(token);
+    // Dependiendo de cómo esté estructurado tu token, 
+    // ajusta el campo que contiene el nombre de usuario
+    // Podría ser 'name', 'username', 'nombre', etc.
+    return values.name || values.sub.split('@')[0]; // Por defecto usa la parte del email antes del @
+  }
+  return "";
+}
  
 }

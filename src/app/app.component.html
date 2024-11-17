@@ -28,8 +28,9 @@
           </a>
         </li>
         <li class="user-icon">
-          <a (click)="navegar()" >
+          <a (click)="navegar()">
             <i class="fas fa-user"></i>
+            <span *ngIf="isLogged" class="username-display">{{ username }}</span>
           </a>
         </li>
       </ul>
