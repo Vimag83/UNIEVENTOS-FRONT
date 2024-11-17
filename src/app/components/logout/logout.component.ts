@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TokenService } from '../../services/token.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-logout',
@@ -16,7 +17,8 @@ export class LogoutComponent implements OnInit {
 
   constructor(
     private tokenService: TokenService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -31,8 +33,7 @@ export class LogoutComponent implements OnInit {
   }
 
   public cancelar() {
-    // Redirigir según el rol
-    const destino = this.userRole === 'admin' ? '/admin' : '/cliente';
-    this.router.navigate([destino]);
+    // Retroceder a la página anterior
+    this.location.back();
   }
 }
